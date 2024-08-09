@@ -8,4 +8,6 @@ import retrofit2.http.Query
 interface AccountApi {
     @GET("/account/get")
     fun getAccountByUsername(@Query("username")username:String): Call<Account>
+    @GET("/account/check/dup/phone")
+    fun checkAccountPhone(@Query("phone")phone: String): Call<Boolean>
 }
