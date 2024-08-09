@@ -3,8 +3,8 @@ package com.example.myapplication.data
 import java.time.LocalDateTime
 
 data class Account(
-    val username:String,
-    val password:String? = "",
+    var username:String,
+    var password:String? = "",
 
     var name:String,
     var phone:String,

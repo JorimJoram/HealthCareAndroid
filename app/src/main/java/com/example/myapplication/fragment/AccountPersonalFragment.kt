@@ -45,15 +45,18 @@ class AccountPersonalFragment : Fragment() {
         checkLicense()
 
         val nextButton = binding.accountPersonalNextButton
+        //nextButton.isEnabled = false //TODO("애러가 발생했던 이유 -> 얘를 못 누르도록 만들어야했는데 누를 수 있도록 되는ㅂ 바람에;;")
         nextButton.setOnClickListener(toNext)
     }
 
     private val toNext = OnClickListener{
         val licenseEdit = binding.accountPersonalLicense
-        account.license = licenseEdit.text.toString()
+        //account.license = licenseEdit.text.toString()
 
         licenseEdit.clearFocus()
         hideKeyBoard(licenseEdit)
+
+        println("TEST: ${account.license}")
 
         if(account.name!="" && account.phone!="" && account.birth != "" && account.gender != -1 && account.license != ""){
             val transaction = activity?.supportFragmentManager?.beginTransaction()
@@ -126,7 +129,7 @@ class AccountPersonalFragment : Fragment() {
                     account.license = ""
                     //TODO("실패 메시지 어떻게 처리할 것인지에 대한 논의 필요")
                 }else{
-                    account.license = license.substring(0,6)
+                    account.license = license
                     Toast.makeText(requireContext(), license, Toast.LENGTH_LONG).show()
                 }
             }
